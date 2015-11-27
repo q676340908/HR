@@ -1,11 +1,30 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="ActionBarTiltleSytle">
+        <item name="android:textColor">@color/actionbar_title</item>
+        <item name="android:textSize">@dimen/actionbar_title_size</item>
+
+    </style>
+    <style name="ActionBarButtonSytle">
+        <item name="android:layout_width">@dimen/actionbar_button_width</item>
+        <item name="android:layout_height">@dimen/actionbar_button_height</item>
+        <item name="android:textColor">@color/actionbar_title</item>
+        <item name="android:textSize">@dimen/actionbar_title_size</item>
+        <item name="android:background">@drawable/button_selector</item>
+
+    </style>
+    <style name="editor_text_style">
+        <item name="android:textSize">@dimen/editor_textsize</item>
+        <item name="android:textColor">@color/editor_text_color</item>
+
+
+    </style>
 </resources>
