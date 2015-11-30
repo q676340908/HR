@@ -7,4 +7,9 @@
     <string name="login">登录</string>
     <string name="setting_server">服务器配置</string>
     <string name="save">保存</string>
+    <string name="regist_attendence">签到</string>
+    <string name="has_regist_attendence">已签到</string>
+    <string name="regist_out">签退</string>
+    <string name="has_regist_out">已签退</string>
+    <string name="history_attendance">考勤历史</string>
 </resources>
