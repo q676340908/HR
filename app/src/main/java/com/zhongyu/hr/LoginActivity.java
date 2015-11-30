@@ -34,6 +34,11 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    @OnClick(R.id.login_bt)
+    public void login(){
+        startActivity(new Intent(LoginActivity.this,MainActivity.class));
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -13,4 +13,6 @@
     <dimen name="editor_textsize">24dp</dimen>
     <dimen name="checkbox_textsize">24sp</dimen>
     <dimen name="setting_editor_height">83dp</dimen>
+
+    <dimen name="list_item_height">60dp</dimen>
 </resources>

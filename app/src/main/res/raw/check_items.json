@@ -1,0 +1,46 @@
+[
+  {
+    "type": "1",
+    "titleResName": "type_personal_center",
+    "iconResName": "ic_card"
+  },
+  {
+    "type": "0"
+  },
+  {
+    "type": "2",
+    "titleResName": "type_evaluation_history",
+    "iconResName": "ic_pic"
+  },
+  {
+    "type": "3",
+    "titleResName": "type_reward_punishiment",
+    "iconResName": "ic_heart"
+  },
+  {
+    "type": "4",
+    "titleResName": "type_promotion_record",
+    "iconResName": "ic_card"
+  },
+  {
+    "type": "5",
+    "titleResName": "type_salary_card",
+    "iconResName": "ic_star"
+  },
+  {
+    "type": "0"
+  },
+  {
+    "type": "6",
+    "titleResName": "type_personal_assets",
+    "iconResName": "ic_box"
+  },
+  {
+    "type": "0"
+  },
+  {
+    "type": "7",
+    "titleResName": "type_modified_password",
+    "iconResName": "ic_star"
+  },
+]

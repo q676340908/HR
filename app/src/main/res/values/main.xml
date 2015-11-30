@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tab_my">我的</string>
+    <string name="tab_attendance">考勤</string>
+    <string name="tab_daily_report">工作日报</string>
+    <string name="tab_workflow">工作流</string>
+
+    <string name="type_personal_center">个人中心</string>
+    <string name="type_evaluation_history">考评历史</string>
+    <string name="type_reward_punishiment">奖罚</string>
+    <string name="type_promotion_record">升降职记录</string>
+    <string name="type_salary_card">工资银行卡</string>
+    <string name="type_personal_assets">个人资产</string>
+    <string name="type_modified_password">修改密码</string>
+</resources>
