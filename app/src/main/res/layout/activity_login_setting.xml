@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/actionbar_height"
+        android:background="@color/actionbar_bg"
+        android:layout_marginBottom="15dp"
+        >
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@drawable/backup_icon"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/setting_server"
+            style="@style/ActionBarTiltleSytle"
+            android:textStyle="bold"
+
+            />
+
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/server_ip_et"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/setting_editor_height"
+        android:layout_gravity="center_vertical"
+        android:background="@drawable/editor_bg"
+        android:paddingLeft="22dp"
+        style="@style/editor_text_style"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        />
+    <EditText
+        android:id="@+id/server_port_et"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/setting_editor_height"
+        android:layout_gravity="center_vertical"
+        android:background="@drawable/editor_bg"
+        android:paddingLeft="22dp"
+        style="@style/editor_text_style"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        />
+    <EditText
+
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/setting_editor_height"
+        android:layout_gravity="center_vertical"
+        android:background="@drawable/editor_bg"
+        android:paddingLeft="22dp"
+        style="@style/editor_text_style"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        />
+    <EditText
+
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/setting_editor_height"
+        android:layout_gravity="center_vertical"
+        android:background="@drawable/editor_bg"
+        android:paddingLeft="22dp"
+        style="@style/editor_text_style"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="69dp"
+        android:layout_marginLeft="13dp"
+        android:layout_marginRight="13dp"
+        android:textSize="24sp"
+        android:textColor="#ffffff"
+        android:text="@string/save"
+        android:background="@drawable/button_selector"
+        android:layout_marginTop="24dp"
+        />
+</LinearLayout>

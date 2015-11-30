@@ -2,4 +2,15 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="actionbar_height">66dp</dimen>
+    <dimen name="actionbar_title_size">22sp</dimen>
+    <dimen name="actionbar_button_width">68dp</dimen>
+    <dimen name="actionbar_button_height">46dp</dimen>
+    <dimen name="actionbar_button_marginright">14dp</dimen>
+    <dimen name="login_editor_width">510dp</dimen>
+    <dimen name="login_editor_height">89dp</dimen>
+    <dimen name="drawable_padding">16dp</dimen>
+    <dimen name="editor_textsize">24dp</dimen>
+    <dimen name="checkbox_textsize">24sp</dimen>
+    <dimen name="setting_editor_height">83dp</dimen>
 </resources>

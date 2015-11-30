@@ -1,12 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
     tools:context="com.zhongyu.hr.LoginActivity">
 
-</RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/actionbar_height"
+        android:background="@color/actionbar_bg"
+        android:layout_marginBottom="15dp"
+        >
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/system_name"
+            style="@style/ActionBarTiltleSytle"
+            android:textStyle="bold"
+
+            />
+        <Button
+            android:id="@+id/setting_bt"
+            style="@style/ActionBarButtonSytle"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/actionbar_button_marginright"
+            android:layout_centerVertical="true"
+            android:text="@string/setting"
+            android:textSize="18dp"
+            />
+    </RelativeLayout>
+    <EditText
+        android:id="@+id/username_et"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/login_editor_height"
+        android:layout_gravity="center_vertical"
+        android:background="@drawable/editor_bg"
+        android:drawableLeft="@drawable/user_icon"
+        android:drawablePadding="@dimen/drawable_padding"
+        android:paddingLeft="18dip"
+        style="@style/editor_text_style"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        />
+    <EditText
+        android:id="@+id/passwd_et"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/login_editor_height"
+        android:layout_gravity="center_vertical"
+        android:background="@drawable/editor_bg"
+        android:drawableLeft="@drawable/passwd_icon"
+        android:drawablePadding="@dimen/drawable_padding"
+        android:paddingLeft="18dip"
+        android:password="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        style="@style/editor_text_style"
+        />
+    <LinearLayout
+        android:id="@+id/ly_checkbox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:paddingLeft="26dp"
+        >
+
+        <CheckBox
+            android:id="@+id/remember_userid_cb"
+
+            android:layout_height="wrap_content"
+            android:text="@string/login_remember_userid"
+            android:textColor="@color/checkbox_text_color"
+
+            android:checked="false"
+            android:button="@drawable/checkbox_selector"
+            android:paddingLeft="16dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            />
+        <CheckBox
+            android:id="@+id/remember_pwd_cb"
+
+            android:layout_height="wrap_content"
+            android:text="@string/login_remember_pwd"
+            android:textColor="@color/checkbox_text_color"
+
+
+            android:button="@drawable/checkbox_selector"
+            android:drawablePadding="16dp"
+            android:paddingLeft="16dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            />
+    </LinearLayout>
+    <Button
+        android:id="@+id/login_bt"
+        android:layout_width="match_parent"
+        android:layout_height="69dp"
+        android:layout_marginLeft="13dp"
+        android:layout_marginRight="13dp"
+        android:textSize="24sp"
+        android:textColor="#ffffff"
+        android:text="@string/login"
+        android:background="@drawable/button_selector"
+        android:layout_marginTop="48dp"
+        />
+
+</LinearLayout>

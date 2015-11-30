@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">HR</string>
+    <string name="system_name">中域HR管理系统</string>
+    <string name="setting">设置</string>
+    <string name="login_remember_userid">记住用户名</string>
+    <string name="login_remember_pwd">记住密码</string>
+    <string name="login">登录</string>
+    <string name="setting_server">服务器配置</string>
+    <string name="save">保存</string>
 </resources>
