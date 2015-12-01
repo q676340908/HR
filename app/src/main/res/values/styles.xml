@@ -27,4 +27,10 @@
 
 
     </style>
+    <style name="button_text_style">
+        <item name="android:textColor">@color/actionbar_title</item>
+        <item name="android:textSize">@dimen/actionbar_title_size</item>
+
+
+    </style>
 </resources>

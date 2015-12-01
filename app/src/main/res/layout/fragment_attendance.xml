@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.baidu.mapapi.map.MapView
+        android:id="@+id/bmapView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:clickable="true" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dip"
+        android:background="@android:color/transparent"
+        android:layout_alignParentBottom="true"
+        >
+
+        <Button
+            android:id="@+id/attendence_bt"
+            android:layout_width="0dip"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="12dip"
+            android:background="@drawable/button_selector"
+            android:text="@string/regist_attendence"
+            style="@style/button_text_style"
+            />
+        <Button
+            android:id="@+id/out_bt"
+            android:layout_width="0dip"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="12dip"
+            android:background="@drawable/button_selector"
+            android:text="@string/regist_out"
+            style="@style/button_text_style"
+            />
+        <Button
+            android:id="@+id/history_bt"
+            android:layout_width="0dip"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@drawable/button_selector"
+            android:text="@string/history_attendance"
+            style="@style/button_text_style"
+
+            />
+    </LinearLayout>
+</RelativeLayout>
