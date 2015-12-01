@@ -10,7 +10,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.zhongyu.hr.HRApp;
 import com.zhongyu.hr.R;
+import com.zhongyu.hr.event.NavigationEvent;
 import com.zhongyu.hr.model.MyInfo;
 
 import java.util.ArrayList;
@@ -61,6 +63,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
                 holder.title.setText(title);
             }
         }
+        holder.setTag(info.type);
     }
 
     @Override
@@ -85,18 +88,25 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
 
         protected TextView title;
         protected ImageView icon;
+        protected View itemView;
 
         public MyViewHolder(View itemView) {
             super(itemView);
             title = (TextView)itemView.findViewById(R.id.title);
             icon = (ImageView)itemView.findViewById(R.id.icon);
+            this.itemView = itemView;
 
             itemView.setOnClickListener(this);
         }
 
+        public void setTag(int type){
+            this.itemView.setTag(type);
+        }
+
         @Override
         public void onClick(View v) {
-
+            int type = (int)v.getTag();
+            HRApp.getInstance().getRxBus().postEvent(new NavigationEvent(type));
         }
     }
 }

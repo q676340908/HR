@@ -132,6 +132,8 @@ public class MyFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        mCompositeSubscription.unsubscribe();
+        if(mCompositeSubscription.hasSubscriptions()){
+            mCompositeSubscription.clear();
+        }
     }
 }

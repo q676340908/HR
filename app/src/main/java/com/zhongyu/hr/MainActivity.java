@@ -9,11 +9,14 @@ import android.support.v7.widget.Toolbar;
 import com.zhongyu.hr.fragment.MainFragment;
 
 import butterknife.Bind;
+import rx.Subscription;
 
 public class MainActivity extends BaseActivity {
 
     @Bind(R.id.toolbar)
     Toolbar mToolbar;
+
+    private Subscription mSubscription;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -24,6 +27,14 @@ public class MainActivity extends BaseActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         navigateMain();
+      /*  mSubscription = HRApp.getInstance().getRxBus().toObservable()
+                        .filter(new Func1() {
+                            @Override
+                            public Object call(Object o) {
+                                return null;
+                            }
+                        })*/
+
 
     }
 
@@ -40,5 +51,11 @@ public class MainActivity extends BaseActivity {
         return R.layout.activity_main;
     }
 
-
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(mSubscription != null && mSubscription.isUnsubscribed()){
+            mSubscription.unsubscribe();
+        }
+    }
 }
