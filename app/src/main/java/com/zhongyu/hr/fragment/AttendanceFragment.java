@@ -1,5 +1,6 @@
 package com.zhongyu.hr.fragment;
 
+import android.graphics.Point;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -70,6 +71,11 @@ public class AttendanceFragment extends Fragment {
 
         ButterKnife.bind(this, rootView);
         baiduMap = bmapView.getMap();
+
+        //设置缩放控件位置
+        Point p = new Point();
+        p.set(0,0);
+        bmapView.setZoomControlsPosition(p);
         return rootView;
 
     }
@@ -109,9 +115,9 @@ public class AttendanceFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        /*if (null != bmapView) {
+        if (null != bmapView) {
             bmapView.onDestroy();
-        }*/
+        }
     }
 
     @Override
@@ -190,7 +196,9 @@ public class AttendanceFragment extends Fragment {
                     sb.append(p.getId() + " " + p.getName() + " " + p.getRank());
                 }
             }
-            Log.i("BaiduLocationApiDem", sb.toString());
+          //  Log.i("BaiduLocationApiDem", sb.toString());
+            Log.i("zhou",sb.toString());
+
             // 构造定位数据
             MyLocationData locData = new MyLocationData.Builder()
                     .accuracy(location.getRadius())
@@ -199,11 +207,10 @@ public class AttendanceFragment extends Fragment {
                     .longitude(location.getLongitude()).build();
             GeoPoint pt = new GeoPoint((int)(location.getLatitude()*1e6),
                     (int)(location.getLongitude()*1e6));
-           /* baiduMap.setMyLocationData(locData);
-            bmapView.animate();*/
+
             baiduMap.setMyLocationEnabled(true);
             baiduMap.setMyLocationData(locData);
-         //   bmapView.animate();
+
             LatLng ll = new LatLng(location.getLatitude(),
                     location.getLongitude());
             MapStatusUpdate u = MapStatusUpdateFactory.newLatLng(ll);
