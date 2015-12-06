@@ -9,18 +9,31 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.baidu.mapapi.BMapManager;
 import com.baidu.mapapi.SDKInitializer;
 import com.baidu.mapapi.map.BaiduMap;
+import com.baidu.mapapi.map.BitmapDescriptorFactory;
+import com.baidu.mapapi.map.InfoWindow;
+import com.baidu.mapapi.map.MapStatus;
 import com.baidu.mapapi.map.MapStatusUpdate;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
+import com.baidu.mapapi.map.MarkerOptions;
 import com.baidu.mapapi.map.MyLocationData;
+import com.baidu.mapapi.map.TextOptions;
 import com.baidu.mapapi.model.LatLng;
 import com.baidu.mapapi.model.inner.GeoPoint;
 
 
+import com.baidu.mapapi.search.core.SearchResult;
+import com.baidu.mapapi.search.geocode.GeoCodeResult;
+import com.baidu.mapapi.search.geocode.GeoCoder;
+import com.baidu.mapapi.search.geocode.OnGetGeoCoderResultListener;
+import com.baidu.mapapi.search.geocode.ReverseGeoCodeOption;
+import com.baidu.mapapi.search.geocode.ReverseGeoCodeResult;
 import com.baidu.nplatform.comapi.map.MapController;
 import com.zhongyu.hr.R;
 
@@ -38,10 +51,12 @@ import java.util.List;
 /**
  * Created by Administrator on 2015/11/30.
  */
-public class AttendanceFragment extends Fragment {
+public class AttendanceFragment extends Fragment  implements OnGetGeoCoderResultListener {
     //  public static String AKEY = "andg67KOIX3Ot77yObAH9pB8";
     BMapManager bMapManager;
     BaiduMap baiduMap = null;
+    GeoCoder mSearch = null; // 搜索模块，也可去掉地图模块独立使用
+    BDLocation bdLocation;
     MapController mapController ;
     public LocationClient mLocationClient = null;
     public BDLocationListener myListener = new MyLocationListener();
@@ -63,15 +78,20 @@ public class AttendanceFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_attendance, container, false);
 
-
+        // 初始化搜索模块，注册事件监听
+        mSearch = GeoCoder.newInstance();
+        mSearch.setOnGetGeoCodeResultListener(this);
 
         mLocationClient = new LocationClient(getActivity().getApplicationContext());     //声明LocationClient类
         mLocationClient.registerLocationListener(myListener);
 
 
         ButterKnife.bind(this, rootView);
+
         baiduMap = bmapView.getMap();
 
+
+       // mapController = new MapController(bmapView);
         //设置缩放控件位置
         Point p = new Point();
         p.set(0,0);
@@ -138,6 +158,7 @@ public class AttendanceFragment extends Fragment {
 
         @Override
         public void onReceiveLocation(BDLocation location) {
+            setBdLocation(location);
             //Receive Location
             StringBuffer sb = new StringBuffer(256);
             sb.append("time : ");
@@ -200,26 +221,71 @@ public class AttendanceFragment extends Fragment {
             Log.i("zhou",sb.toString());
 
             // 构造定位数据
-            MyLocationData locData = new MyLocationData.Builder()
-                    .accuracy(location.getRadius())
-                            // 此处设置开发者获取到的方向信息，顺时针0-360
-                    .direction(100).latitude(location.getLatitude())
-                    .longitude(location.getLongitude()).build();
-            GeoPoint pt = new GeoPoint((int)(location.getLatitude()*1e6),
-                    (int)(location.getLongitude()*1e6));
+//            MyLocationData locData = new MyLocationData.Builder()
+//                    .accuracy(location.getRadius())
+//                            // 此处设置开发者获取到的方向信息，顺时针0-360
+//                    .direction(100).latitude(location.getLatitude())
+//                    .longitude(location.getLongitude()).build();
 
-            baiduMap.setMyLocationEnabled(true);
-            baiduMap.setMyLocationData(locData);
+//
+//            baiduMap.setMyLocationEnabled(true);
+//            baiduMap.setMyLocationData(locData);
+//            baiduMap.setBuildingsEnabled(true);
 
             LatLng ll = new LatLng(location.getLatitude(),
                     location.getLongitude());
-            MapStatusUpdate u = MapStatusUpdateFactory.newLatLng(ll);
-            baiduMap.animateMapStatus(u);
+
+         // 反Geo搜索
+            mSearch.reverseGeoCode(new ReverseGeoCodeOption()
+                    .location(ll));
+
+          //  MapStatusUpdate u = MapStatusUpdateFactory.newLatLngZoom(ll,20);
+
+
+         //   baiduMap.animateMapStatus(u);
+
             mLocationClient.stop();
 
 
 
 
+
         }
+    }
+
+    @Override
+    public void onGetGeoCodeResult(GeoCodeResult geoCodeResult) {
+
+    }
+
+    @Override
+    public void onGetReverseGeoCodeResult(ReverseGeoCodeResult reverseGeoCodeResult) {
+        if (reverseGeoCodeResult == null || reverseGeoCodeResult.error != SearchResult.ERRORNO.NO_ERROR) {
+            Toast.makeText(getActivity(), "抱歉，未能找到结果", Toast.LENGTH_LONG)
+                    .show();
+            return;
+        }
+        baiduMap.clear();
+        View view  = getActivity().getLayoutInflater().inflate(R.layout.baidu_location_flagview,null);
+        TextView locationText = (TextView) view.findViewById(R.id.location_text);
+        locationText.setText(getBdLocation().getAddrStr());
+
+        InfoWindow mInfoWindow = new InfoWindow(BitmapDescriptorFactory.fromView(view), reverseGeoCodeResult
+                .getLocation(), -47, null);
+        baiduMap.showInfoWindow(mInfoWindow);
+        baiduMap.addOverlay(new MarkerOptions().position(reverseGeoCodeResult.getLocation())
+                .icon(BitmapDescriptorFactory
+                        .fromResource(R.drawable.icon_gcoding)));
+        MapStatusUpdate u = MapStatusUpdateFactory.newLatLngZoom(reverseGeoCodeResult
+                .getLocation(),18);
+        baiduMap.setMapStatus(u);
+    }
+
+    public BDLocation getBdLocation() {
+        return bdLocation;
+    }
+
+    public void setBdLocation(BDLocation bdLocation) {
+        this.bdLocation = bdLocation;
     }
 }
